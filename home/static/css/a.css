@@ -10,3 +10,9 @@
     background-color:green;
     
 }
+.c1{
+    background-image: url('static/r.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
