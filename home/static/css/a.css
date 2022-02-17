@@ -1,10 +1,16 @@
 .p1{
-    color:rgb(55, 0, 255);
+    color:rgb(76, 0, 255);
     font-size:larger;
+    display:inline-flex;
 }
 
 .button2 
 {
     border-radius: 4px;
-    background-color: blue;
+    background-color: rgb(255, 0, 34);
+    border-width: 10px;
+    border:solid black ;
+    padding:5px 10px 5px 10px;
+    margin:1px 1px 1px 1px;
+
 }
