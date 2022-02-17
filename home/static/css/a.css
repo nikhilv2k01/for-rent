@@ -16,8 +16,9 @@
     
 }
 .c1{
-    background-image: url('static/r.png');
+
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    background-size: 1800px 900px;
   }
