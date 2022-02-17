@@ -1,12 +1,12 @@
 .p1{
-    color:rgb(0, 255, 42);
+    color:rgb(4, 0, 255);
     font-size:larger;
     display:inline-flex;
 }
 
 .button2 
 {
-    
+    color:white;
     border-radius: 4px;
     background-color: rgba(0, 128, 28, 0.767);
     border-width: 3px;
