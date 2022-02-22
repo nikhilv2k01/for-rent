@@ -1,10 +1,12 @@
-#bg{background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+#bg{
+    background-repeat:no repeat;
+    
+    background-size:cover;
+
 
 }
 .p1{
-    color:rgb(4, 0, 255);
+    color:rgb(35, 35, 56);
     font-size:larger;
     display:inline-flex;
 }
@@ -15,10 +17,19 @@
     background-color:green;
     
 }
-.c1{
-
-    background-repeat: no-repeat;
-    
-    background-size: cover ;
-  
-  }
+/* .button1{
+    background-color: #4CAF50; /* Green 
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  } */
+/*.dv{
+    height:250px;
+    width: 310px;
+    background-color: white;
+    border:2px;
+}*/

@@ -7,39 +7,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/a.css' %}">
-        
+    <style>
+      /* .dv{
+    height:250px;
+    width: 310px;
+    background-color: white;
+    border:2px;
+}  */
+.button1,.d{
+   background-color: green;
+   color: white;
+   text-decoration: none;
+   
+   
+  }
+  
+
+    </style>    
+
 </head>
 <body id="bg" style="background-image:url('{% static "r.jpg" %}') ;">
-
+  <br><br><br>
+  <br><br>
   
-    <center>
-        <h1 style="font-size:50px"><u> 4RENT </u>
-        </h1>
-    </center>
+    <br><br><br>
+    <br><br>
     <form action="" method="post">
         
       
-        <div  align="center" valign="center" >
+        <div class="" align="center" valign="center" >
           <label for=""><b class="p1">Username:</b></label>
-          <input type="text" placeholder="Enter Username">
+          <input type="text" placeholder="Enter Username" >
           <br><br>
       
-          <label for=""><b class="p1">Password:</b></label>
+          <label for=""><b class="p1">Password:</b>
           <input type="password" placeholder="Enter Password" >
           <br><br>
       
-          <button type="submit" class="button2">Login</button>
+          <button type="submit" class="button1">Login</button>
           <br><br>
           
-        </div>
       
-        <div  align="center">
-          <button type="button" class="button2">signup</button> &nbsp;&nbsp;&nbsp;&nbsp;
-          <span>Forgot <a href="#">password?</a></span>
+        
+          <button class="button1" ><a href="{% url 'sin' %}"  class="d"> signup</a></button> &nbsp;&nbsp;&nbsp;&nbsp; 
+          <a href="#"><i>Forgot password?,</i></a>
         </div>
         
       </form> 
-</body>
-</html>
 </body>
 </html>
