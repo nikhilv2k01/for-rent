@@ -5,3 +5,5 @@ def Home(request):
     return render(request,"d.html")
 def sign(request):
     return render(request,"e.html")
+def hom(request):
+    return render(request,"hm.html")
