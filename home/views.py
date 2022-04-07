@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
-def Home(request):
-    return render(request,"d.html")
+def login(request):
+    return render(request,"home/login.html")
+
 def sign(request):
-    return render(request,"e.html")
-def hom(request):
-    return render(request,"hm.html")
+    return render(request,"home/signup.html")
+
+def home(request):
+    return render(request,"home/home.html")
