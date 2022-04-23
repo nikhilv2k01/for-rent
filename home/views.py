@@ -9,3 +9,6 @@ def sign(request):
 
 def home(request):
     return render(request,"home/home.html")
+
+def master(request):
+    return render(request,"home/rent_master.html")

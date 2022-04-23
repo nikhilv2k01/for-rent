@@ -8,7 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+        <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Luckiest+Guy&family=Paytone+One&display=swap" rel="stylesheet">
+        
+        
     <style>
         .dd {
             background-color: white;
@@ -16,25 +19,35 @@
         }
 
         div>label {
-            font-size: 500;
+            font-size: 150;
             font-weight: bold;
 
         }
         .rent{
-            color: rgb(239, 228, 228);
-            background-color: darkblue;
-            padding-left: 5%;
+            color: rgb(228, 219, 219);
+            background-color: rgb(172, 7, 40);
+            
             padding-top: 2%;
             padding-bottom: 2%;
+           
         }
+        .font{
+            font-family: 'Acme', sans-serif;
+            font-size: 20px;
+        }
+        .hfont{
+            font-family: 'Luckiest Guy', cursive;
+            
+        }
+       
     </style>
 
 <body class="dd">
-    <div class="rent">
-        <h1>FOR RENT</h1>
+    <div class="rent hfont">
+      <center>  <h1>FOR RENT</h1></center>
     </div>
     
-    <div class="p-5 test">
+    <div class="p-5 test font">
         
         <form action="" method="get">
             <div class="form-group row">
@@ -44,24 +57,24 @@
                 </div>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-lg-8">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Apartments</option>
-                        <option>Houses</option>
-                        <option > Shops</option>
+                    <select class="form-control" id="renttype" onchange=" hideUserInputs()">
+                        <option value="apartments">Apartments</option>
+                        <option value="houses">Houses</option>
+                     <option value="shops"> Shops</option>
 
                     </select>
                 </div>
 
             </div>
-            <div class="form-group row ">
-                <label for="" class="col-sm-2 col-form-label">Bed</label>
+            <div class="form-group row shopfiled">
+                <label for="" class="col-sm-2 col-form-label " >Bed</label>
                 <div class="col-lg-1"><b>:</b></div>
 
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="">
                 </div>
             </div>
-            <div class="form-group row ">
+            <div class="form-group row shopfiled">
                 <label for="" class="col-sm-2 col-form-label">Bath </label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
@@ -84,14 +97,14 @@
 
             </div>
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label">Built Area:</label>
+                <label for="" class="col-sm-2 col-form-label">Built Area</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label">Carpet Area:</label>
+                <label for="" class="col-sm-2 col-form-label">Carpet Area</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="">
@@ -119,7 +132,7 @@
                     <label for="">NO</label>
                     <input type="radio" name="bachelor">
             </div> -->            
-            <div class="form-group row ">
+            <div class="form-group row shopfiled">
                 <label for="" class="col-sm-2 col-form-label">Bachelors Allowed</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
@@ -142,7 +155,8 @@
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Upload images</label>
                 <div class="col-lg-1"><b>:</b></div>
-                <button type="button" class="btn btn-primary">Upload</button>
+                <input type="file" name="" id="">
+                <!-- <button type="button" class="btn btn-primary">Upload</button> -->
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Price </label>
@@ -167,6 +181,26 @@
 
         </form>
     </div>
+    <script>
+        function hideUserInputs(){
+            
+            renttype=document.getElementById("renttype")
+            console.log(renttype.value);
+            if(renttype.value == "shops"){
+   
+                document.getElementsByClassName('shopfiled')[0].hidden = true
+                document.getElementsByClassName('shopfiled')[1].hidden = true
+                document.getElementsByClassName('shopfiled')[2].hidden = true
+ 
+            }
+            else{
+                document.getElementsByClassName('shopfiled')[0].hidden = false
+                document.getElementsByClassName('shopfiled')[1].hidden = false
+                document.getElementsByClassName('shopfiled')[2].hidden = false
+              
+            }
+        }
+    </script>
 
 </body>
 

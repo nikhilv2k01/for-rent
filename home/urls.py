@@ -1,7 +1,10 @@
 from . import views
 from django.urls import path
-urlpatterns=[
-    path('',views.login),
-    path('sign',views.sign , name="sin"),
-    path('home',views.home)
+app_name = 'home'
+urlpatterns = [
+    path('', views.login, name="loginnow"),
+    path('sign', views.sign, name="submit"),
+    path('home', views.home),
+    path('master', views.master)
+ 
 ]
