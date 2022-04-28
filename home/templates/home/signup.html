@@ -7,10 +7,12 @@
 
 
 <center>
-    <form action="" method="get" style="border:5px solid rgb(204, 204, 204); width: 40%; margin: 2%;"
-        onsubmit="return validate()">
+    <form action="" method="post" style="border:5px solid rgb(204, 204, 204); width: 40%; margin: 2%;">
+        {% csrf_token %}
+        
 
-       
+
+
         <div class="container pd">
             <h1 class="">SignUp</h1>
 
@@ -18,23 +20,23 @@
 
 
             <input type="text" placeholder="Username" name="username" id="user_name">
-            <small id="user_err"></small>
+            <span id="user_err"></span>
 
 
             <input type="text" placeholder="Email" name="email" id="email">
-            <small id="email_err"></small>
+            <span id="email_err"></span>
 
 
             <input type="text" placeholder=" Password" name="password" id="pswd">
-            <small id="pswd_err"></small>
+            <span id="pswd_err"></span>
 
-            <input type="text" placeholder="confirm Password" name="cpassword" id="c_pswd">
-            <small id="cpswd_err"></small>
+            <input type="text" placeholder="Confirm Password" name="cpassword" id="c_pswd">
+            <span id="cpswd_err"></span>
 
 
             <div class="clearfix">
 
-                <center> <button type="submit" class="signupbtn"
+                <center> <button type="submit" class="signupbtn" onclick="return validate()"
                         style="background-color: rgb(172, 7, 40); ">Submit</button></center>
 
                 <p>Already have an Account? <a href="{% url 'home:loginnow' %}">
@@ -44,84 +46,84 @@
     </form>
 </center>
 <script>
-    function validate(){
-        var status=1
-        var u_name=document.getElementById("user_name")
-        var u_email=document.getElementById("email")
-        var u_pswd=document.getElementById("pswd")
-        var u_cpswd=document.getElementById("c_pswd")
+    function validate() {
+        var status = 1
+        var u_name = document.getElementById("user_name")
+        var u_email = document.getElementById("email")
+        var u_pswd = document.getElementById("pswd")
+        var u_cpswd = document.getElementById("c_pswd")
         var email_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
-        if(u_name.value==""){
-            documet.getElementById("user_err").innerHTML="please fill username"
-            documet.getElementById("user_err").style.color="red"
-            status=0
+        if (u_name.value == "") {
+            document.getElementById("user_err").innerHTML = "Please Enter Username"
+            document.getElementById("user_err").style.color = "red"
+            status = 0
+
+
+        } 
+        else {
+            document.getElementById("user_err").innerHTML = ""
+            status = 1
 
 
         }
-        else{
-            document.getElementById("user_err").innerHTML=""
-            status=1
+        if (u_email.value == "") {
+            document.getElementById("email_err").innerHTML = "Please Enter Email"
+            document.getElementById("email_err").style.color = "red"
 
-        }
-        if(u_email.value==""){
-            documet.getElementById("email_err").innerHTML="please enter email"
-            documet.getElementById("email_err").style.color="red"
-            status=0
-
-        }
-        else if(u_email.value.match(email_pattern)==null){
-            documet.getElementById("email_err").innerHTML="please enter valid email"
-            documet.getElementById("email_err").style.color="red"
-            status=0
-
+            status = 0
 
 
         }
-        else{
-            document.getElementById("email_err").innerHTML=""
-            status=1
+        else if (u_email.value.match(email_pattern) == null) {
+            document.getElementById("email_err").innerHTML = "Please Enter Valid Email"
+            document.getElementById("email_err").style.color = "red"
+            status = 0
+          
+ 
+        }
+        else {
+            document.getElementById("email_err").innerHTML = ""
+            status = 1
 
         }
-        if(u_pswd.value==""){
-            documet.getElementById("pswd_err").innerHTML="please enter password"
-            documet.getElementById("pswd_err").style.color="red"
-            status=0
+        if (u_pswd.value == "") {
+            document.getElementById("pswd_err").innerHTML = "Please Enter Password"
+            document.getElementById("pswd_err").style.color = "red"
+            status = 0
 
         }
-        else{
-            document.getElementById("pswd_err").innerHTML=""
-            status=1
+        else {
+            document.getElementById("pswd_err").innerHTML = ""
+            status = 1
         }
-        if(u_cpswd.value==""){
-            documet.getElementById("cpswd_err").innerHTML="please enter confirm password"
-            documet.getElementById("cpswd_err").style.color="red"
-            status=0
+        //1
+        if (u_cpswd.value == "") {
+            document.getElementById("cpswd_err").innerHTML = "Please Enter Confirm Password"
+            document.getElementById("cpswd_err").style.color = "red"
+            status = 0
 
         }
-        else{
-            document.getElementById("cpswd_err").innerHTML=""
-            status=1
-        }
-        if(pswd.value!=cpswd.value){
-            documet.getElementById("cpswd_err").innerHTML="password don't match"
-            documet.getElementById("cpswd_err").style.color="red"
-            status=0
-
+        else if(u_pswd.value != u_cpswd.value){
+            document.getElementById("cpswd_err").innerHTML = "Password doesn't Match"
+            document.getElementById("cpswd_err").style.color = "red"
+            status = 0
 
         }
-        else{
-            document.getElementById("cpswd_err").innerHTML=""
-            status=1
+        
+//1
+
+        
+        else {
+            document.getElementById("cpswd_err").innerHTML = ""
+            status = 1
         }
-        if(status==0){
+        if (status == 0) {
             return false;
         }
 
-
-        
+console.log(status)
 
     }
 </script>
 {% endblock %}
-</div>

@@ -1,0 +1,31 @@
+{% extends 'home/rent_master.html' %}
+{% block content %}
+{% load static %}
+<div class="row" style=" margin-top:3%;">
+    
+    <div class="card col-lg-3" style="margin-left: 4%; ">
+        <img src="{% static 'images/b.jpg' %}" alt="Avatar" style="width:100%">
+        <div class="container ">
+
+            <h5><b>Price :</b></h5>
+            <h5><b>Place :</b></h5>
+            <h5><b>Furnishing :</b></h5>
+            <a href="{% url 'home:details' %}">See more</a>
+        </div>
+
+    </div>
+    
+    
+    <div class="col-lg-1"></div>
+    <div class="card col-lg-3">
+        <img src="{% static 'images/r.jpg' %}" alt="Avatar" style="width:100%">
+        <div class="container ">
+
+            <h5><b>Price :</b></h5>
+            <h5><b>Place :</b></h5>
+            <h5><b>Furnishing :</b></h5>
+            
+        </div>
+
+    </div>
+    {% endblock %}

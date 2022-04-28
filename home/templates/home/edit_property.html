@@ -1,0 +1,136 @@
+{% extends 'home/rent_master.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .font {
+        font-family: 'Acme', sans-serif;
+        font-size: 20px;
+    }
+</style>
+
+<div class="p-5 test font">
+
+    <form action="" method="get">
+
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Owner Name</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row shopfiled">
+            <label for="" class="col-sm-2 col-form-label ">Bed</label>
+            <div class="col-lg-1"><b>:</b></div>
+
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row shopfiled">
+            <label for="" class="col-sm-2 col-form-label">Bath </label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-2">
+                <label for="exampleFormControlSelect1">Furnishing</label>
+
+            </div>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-lg-8">
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Furnished</option>
+                    <option>Unfurnished</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Built Area</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Carpet Area</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Total Floor</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Floor no. </label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+
+        <div class="form-group row shopfiled">
+            <label for="" class="col-sm-2 col-form-label">Bachelors Allowed</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <label for="">YES</label>
+                <input type="radio" name="bachelor">
+                <label for="">NO</label>
+                <input type="radio" name="bachelor">
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Property Address</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <textarea class="form-control col-sm-8 " id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div>
+
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Upload images</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <input type="file" name="" id="">
+            <!-- <button type="button" class="btn btn-primary">Upload</button> -->
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Price </label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Contact Number</label>
+            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="">
+            </div>
+
+        </div>
+</div>
+<div class="form-group row">
+    <label for="" class="col-sm-2 col-form-label"></label>
+    <div class="col-lg-1"><b></b></div>
+    <button type="button" class="btn btn-primary col-lg-2"
+            style="margin-left:20px; padding: 10px;">Submit</button>
+</div>
+
+
+</form>
+</div>
+
+
+{% endblock %}

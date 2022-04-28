@@ -19,9 +19,10 @@
     border:2px;
 }  */
 
-  body{
-    background-image: url("static/images/r.jpg");
-  }
+    body {
+      background-image: url("static/images/r.jpg");
+    }
+
     .button1,
     .d {
       background-color: green;
@@ -30,15 +31,16 @@
 
 
     }
-    .clr{
+
+    .clr {
       color: white;
       font-style: oblique;
     }
 
     .bc {
       /* background-color: rgba(176, 180, 157, 0.603); */
-      
-      background-color:rgba(207, 18, 56, 0.986) ;
+
+      background-color: rgba(47, 48, 54, 0.628);
       border: 2px;
       border-radius: 10px;
       width: 20%;
@@ -59,27 +61,31 @@
     .bg {
       background-repeat: no-repeat;
       background-size: cover;
+    }
   </style>
 
 </head>
 
-  <body class="bg">
+<body class="bg">
 
-  <form action="" method="post">
+  <form action="" method="post" onsubmit="return validate()">
+    {% csrf_token %}
 
 
-    <div class="bc " align="center" >
-      <label for=""><b class="clr" >Username:</b></label>
+    <div class="bc " align="center">
+      <label for=""><b class="clr">Username:</b></label>
 
-      <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+      <input type="text" class="form-control" id="username" placeholder="Username">
+      <span id="u_err"></span>
       <br>
 
       <label for=""><b class="clr">Password:</b></label>
-      <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Password">
+      <input type="text" class="form-control" id="pswd" placeholder="Password">
+      <span id="p_err"></span>
 
 
       <br><br>
-      <button type="button" class="btn btn-success">Login</button>
+      <button type="submit" class="btn btn-success">Login</button>
 
       <br><br>
       <a class="btn btn-primary" href="{% url 'home:submit' %}" role="button">SignUp</a> &nbsp;
@@ -88,6 +94,44 @@
     </div>
 
   </form>
+  <script>
+    function validate() {
+      var u_name = document.getElementById("username")
+      var u_pswd = document.getElementById("pswd")
+      status = 1
+
+      if (u_name.value == "") {
+        document.getElementById("u_err").innerHTML = "Please enter username"
+        document.getElementById("u_err").style.color = "red"
+        status = 0
+
+
+      }
+      else {
+        document.getElementById("u_err").innerHTML = ""
+        status = 1
+      }
+
+      if (u_pswd.value == "") {
+          document.getElementById("p_err").innerHTML = "Please enter password"
+          document.getElementById("p_err").style.color = "red"
+          status = 0
+
+
+        }
+      else {
+          document.getElementById("p_err").innerHTML = ""
+          status = 1
+        }
+      if (status == 0) {
+            return false;
+        }
+
+
+      }
+  </script>
+
+
 
 </body>
 

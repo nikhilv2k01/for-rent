@@ -7,11 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Luckiest+Guy&family=Paytone+One&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
 <style>
   /* The navbar container */
   .topnav {
-    overflow: hidden;
+    height: 150px;
     background-color:rgb(172, 7, 40);
     color: white;
     /* position: sticky; */
@@ -29,7 +30,7 @@
 
   /* Navbar links */
   .topnav a {
-    /* float: left; */
+    float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -52,6 +53,7 @@
   .grida {
     display: grid;
     grid-template-columns: auto auto auto;
+    text-decoration: none;
    
 
    
@@ -90,7 +92,7 @@
     padding-left: 7%;
     padding-top: 3%;
     font: size 50px;
-    ;
+    
     font-weight: bolder;
 
   }
@@ -114,7 +116,7 @@
   }
 
   .pright {
-    padding-right: 2%;
+    padding-right: 3%;
     font-size: 30px;
   }
 
@@ -144,29 +146,48 @@
     font-size: 30px;
     
   }
+  body{
+    margin: 0;
+  }
 </style>
 
 <body>
-  <div class="topnav">
+  <div class=" container-fluid topnav">
 
 
     <h1 class="tophead">FOR RENT</h1>
 
     <div class="pright">
-      <a href="#Account" style="float:right;" style="">Account</a>
-      <a href="#Favourites" style="float:right;">Favourites</a>
-      <a href="#post" style="float:left;"> <span class="googlefont"> POST YOUR PROPERTY</a></span>
-      <a href="#home" style="float:right;">Home</a>
+      <div class="btn-group pright" style="float:right; ">
+      <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="color:white;">
+        Account
+      </button>
+      <div class="dropdown-menu" style="background-color:rgb(71, 61, 61);">
+        <!-- <a class="dropdown-item" href="" >Profile</a> -->
+        <a class="dropdown-item" href="{% url 'home:change' %}">Change Password</a>
+        <a class="dropdown-item" href="{% url 'home:viewproperty' %}">View Property</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">LogOut</a>
+      </div>
+    </div>
+    
+  
+      <a href="{% url 'home:viewfavourites' %}" style="float:right;">Favourites</a>
+      <a href="{% url 'home:rentseller' %}" style="float:left;"> <span class="googlefont"> POST YOUR PROPERTY</a></span>
+      <a href="{% url 'home:main' %}" style="float:right;">Home</a>
     </div>
   </div>
 
-
-
+  <!-- Example single danger button -->
+  
   <div>
     <center>
       <p class="headtag">Don't Own it, Just Rent it ! </p>
     </center>
   </div>
+
+  <div>
+
 
 
   <form class="form-inline pdleft ">
@@ -175,27 +196,36 @@
     <button class="btn btn-outline-success my-2 my-sm-0 col-lg-3 " type="submit"
       style="height: 40px;font-size: 20px; ">Search</button>
   </form>
-  <div class="grida margin_img">
-    <div class="grid-item">
-      <img src="{% static 'images/Verified.jpg' %}" alt="" style="height: 300px;width: 500px;">
-      <center>
-        <h2>Verified Houses</h2>
-      </center>
+  <div class="row margin_img justify-content-md-center" >
+    <div class="col-4 text-center">
+    <a href="{% url 'home:display' %}" class="text-center">
+ 
+        <img src="{% static 'images/r.jpg' %}" alt="" style="height: 300px;width: 400px;">
+        <div style="text-align: center;">
+          <h2>Houses</h2>
+        </div>
+      </a>   
+      </div>
+    
+    
+    <div class="col-4 text-center">
+      <a href="{% url 'home:display' %}">
+      <img src="{% static 'images/furnished.jpg' %}" alt="" style="height: 300px;width: 400px;">
+        <h2>Apartments</h2>
+      </a>
     </div>
-    <div class="grid-item">
-      <img src="{% static 'images/furnished.jpg' %}" alt="" style="height: 300px;width: 500px;">
-      <center>
-        <h2>Furnished Apartments</h2>
-      </center>
-    </div>
-    <div class="grid-item">
-    <img src="{% static 'images/1.png' %}" alt="" style="height: 300px;width: 500px;">
-    <center>
-      <h2>Commercial Shops</h2>
-    </center>
-  </div>
 
-  </div>
+  
+    <div class="col-4 text-center">
+      <a href="{% url 'home:display' %}">
+      <img src="{% static 'images/1.png' %}" alt="" style="height: 300px;width: 400px;">
+
+        <h2>Shops</h2>
+  
+    </div>
+  </a>
+
+</div>
   <div class="topnav" style="margin-top: 3%;height: 50px;">
     
   </div>
