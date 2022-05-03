@@ -15,7 +15,9 @@ urlpatterns = [
     path('edit', views.edit_properties,name="user_edit"),
     path('seller',views.rent_seller,name="rentseller"),
     path('pack',views.package,name="pkgs"),
-    path('forgot',views.forgot_password,name="pforgot")
+    path('forgot',views.forgot_password,name="pforgot"),
+    path('mas',views.mstr),
+    path('shops',views.viewshop)
     
  
 ]

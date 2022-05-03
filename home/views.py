@@ -38,7 +38,15 @@ def package(request):
     return render(request,"home/package.html")    
 
 def forgot_password(request):
-    return render(request,"home/forgot_pswd.html")         
+    return render(request,"home/forgot_pswd.html") 
+
+def mstr(request):
+    return render(request,"home/master_rent.html")
+
+def viewshop(request):
+    return render(request,"home/shops.html")         
+
+
 
 
 

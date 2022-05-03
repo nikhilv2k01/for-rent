@@ -80,7 +80,7 @@
       <br>
 
       <label for=""><b class="clr">Password:</b></label>
-      <input type="text" class="form-control" id="pswd" placeholder="Password">
+      <input type="password" class="form-control" id="pswd" placeholder="Password">
       <span id="p_err"></span>
 
 
@@ -90,7 +90,7 @@
       <br><br>
       <a class="btn btn-primary" href="{% url 'home:submit' %}" role="button">SignUp</a> &nbsp;
 
-      <a href="#" class="clr">Forgot password?</a>
+      <a href="{% url 'home:pforgot' %}" class="clr">Forgot password?</a>
     </div>
 
   </form>
