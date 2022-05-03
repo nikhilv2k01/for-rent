@@ -1,0 +1,121 @@
+{% extends 'home/master_rent.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .width {
+        width: 83%;
+    }
+
+
+    .btn-warning{
+  position: relative;
+  padding: 11px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #ffc100;
+  border: 0;
+  transition: 0.2s;
+  overflow: hidden; 
+}
+
+.btn-warning input[type = "file"]{
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: scale(3);
+  opacity: 0;
+}
+
+.btn-warning:hover{
+  background-color: #d9a400;
+}
+.upload{
+  width: 100px;
+  position: relative;
+  margin: auto;
+}
+
+.upload img{
+  border-radius: 50%;
+  border: 6px solid #eaeaea;
+}
+
+.upload .round{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #00B4FF;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.upload .round input[type = "file"]{
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+input[type=file]::-webkit-file-upload-button{
+    cursor: pointer;
+}
+
+</style>
+
+
+  <div class="upload" style="margin-top: 3%; ">
+    <img src="{% static 'images/noprofil.jpg' %}" width = 150 height = 150 alt="" >
+    <div class="round">
+      <input type="file">
+      <i class = "fa fa-camera" style = "color: #fff;"></i>
+    </div>
+  </div>
+
+
+    <form style="padding-left: 18%; padding-top: 2%;">
+        <div class="form-row" >
+            <div class="form-group col-md-5">
+                <label for="">First Name</label>
+                <input type="text" class="form-control" id="inputEmail4">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="">Last Name</label>
+                <input type="text" class="form-control" id="inputPassword4">
+            </div>
+        </div>
+        <div class="form-group width ">
+            <label for="">Date Of Birth</label>
+            <input type="date" class="form-control" id="" placeholder="">
+        </div>
+        <div class="form-group width">
+            <label for="">Phone Number </label>
+            <input type="text" class="form-control" id="" placeholder="">
+        </div>
+        <div class="form-group width">
+            <label for="">Email </label>
+            <input type="text" class="form-control" id="" placeholder="">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="">
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" id="">
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary col-lg-1">SAVE</button>
+    </form>
+</div>
+{% endblock %}

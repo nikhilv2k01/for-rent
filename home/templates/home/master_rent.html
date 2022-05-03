@@ -40,7 +40,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Luckiest+Guy&family=Paytone+One&display=swap"
         rel="stylesheet">
-</head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
 <style>
     /* The navbar container */
     .topnav {
@@ -123,7 +124,7 @@
     .headtag {
 
 
-        margin-top: 3%;
+        margin-top: 5%;
 
         font-size: 45px;
         font-family: 'Satisfy', cursive;
@@ -153,7 +154,7 @@
     }
 
     .margin_img {
-        margin-top: 2%;
+        margin-top: 4%;
     }
 
     .grid-item {
@@ -190,7 +191,7 @@
                     Account
                 </button>
                 <div class="dropdown-menu" style="background-color:rgb(71, 61, 61);">
-                    <!-- <a class="dropdown-item" href="" >Profile</a> -->
+                    <a class="dropdown-item" href="{% url 'home:myprofile' %}" >Profile</a>
                     <a class="dropdown-item" href="{% url 'home:change' %}">Change Password</a>
                     <a class="dropdown-item" href="{% url 'home:viewproperty' %}">View Property</a>
                     <div class="dropdown-divider"></div>

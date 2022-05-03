@@ -17,7 +17,8 @@ urlpatterns = [
     path('pack',views.package,name="pkgs"),
     path('forgot',views.forgot_password,name="pforgot"),
     path('mas',views.mstr),
-    path('shops',views.viewshop)
+    path('shops',views.viewshop),
+    path('profile',views.profile,name="myprofile")
     
  
 ]

@@ -44,7 +44,10 @@ def mstr(request):
     return render(request,"home/master_rent.html")
 
 def viewshop(request):
-    return render(request,"home/shops.html")         
+    return render(request,"home/shops.html")    
+
+def profile(request):
+    return render(request,"home/profile.html")          
 
 
 
