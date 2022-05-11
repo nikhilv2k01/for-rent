@@ -68,23 +68,24 @@
 
 <body class="bg">
 
-  <form action="" method="post" onsubmit="return validate()">
+  <form action="" method="POST" onsubmit="return validate()">
     {% csrf_token %}
 
 
     <div class="bc " align="center">
       <label for=""><b class="clr">Username:</b></label>
 
-      <input type="text" class="form-control" id="username" placeholder="Username">
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username">
       <span id="u_err"></span>
       <br>
 
       <label for=""><b class="clr">Password:</b></label>
-      <input type="password" class="form-control" id="pswd" placeholder="Password">
+      <input type="password" class="form-control" id="pswd" placeholder="Password" name="password">
       <span id="p_err"></span>
-
-
+    
+      <small style="color: red;">{{err_msg}}</small>
       <br><br>
+      
       <button type="submit" class="btn btn-success">Login</button>
 
       <br><br>

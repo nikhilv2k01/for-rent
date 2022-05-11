@@ -39,23 +39,24 @@
         body {
             margin: 0;
         }
+
         .card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: .3s;
-    
-  }
+            /* Add shadows to create the "card" effect */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: .3s;
 
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  }
+        }
 
-  .box{
-      margin-top: 4%;
-      width: 40%;
-      height:500px;
-  }
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .box {
+            margin-top: 4%;
+            width: 40%;
+            height: 500px;
+        }
     </style>
 
 
@@ -70,24 +71,30 @@
 
 
     </div>
-  <center>  <div div class="box card" >
-      <h2 style="padding-top: 3%;">Admin Login</h2>
-    <form>
-        <div class="form-group col-lg-10" style="padding-top: 10%;">
-          <label for="exampleInputEmail1" style="font-size: larger;"  ><b>Username</b></label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-         
+    <center>
+        <div div class="box card">
+            <h2 style="padding-top: 3%;">Admin Login</h2>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group col-lg-10" style="padding-top: 10%;">
+                    <label for="exampleInputEmail1" style="font-size: larger;"><b>Username</b></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        name="username" required>
+
+                </div>
+                <div class="form-group col-lg-10">
+                    <label for="exampleInputPassword1" style="font-size: larger;"><b>Password</b></label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                </div>
+               <div> <small style="color: red; font-size: 15px;">{{err_msg}}</small></div>
+               <br>
+
+                <button type="submit" class="btn btn-primary col-lg-5" style="font-size: large;">Login</button>
+            </form>
         </div>
-        <div class="form-group col-lg-10">
-          <label for="exampleInputPassword1"style="font-size: larger;"><b>Password</b></label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-       
-        <button type="submit" class="btn btn-primary col-lg-5" style="font-size: large;">Login</button>
-      </form>
-    </div>
-</center>
-  
+    </center>
+
 
 
     <div class="rent" style="margin-top: 2%; height:60px">

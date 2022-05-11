@@ -18,7 +18,8 @@ urlpatterns = [
     path('forgot',views.forgot_password,name="pforgot"),
     path('mas',views.mstr),
     path('shops',views.viewshop),
-    path('profile',views.profile,name="myprofile")
+    path('profile',views.profile,name="myprofile"),
+    path('logout',views.logout,name="out")
     
  
 ]

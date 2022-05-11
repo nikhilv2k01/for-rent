@@ -41,8 +41,8 @@
         <div class="container ">
 
             <h5><b>Price :</b></h5>
-            <h5><b>Place :</b></h5>
-            <h5><b>Furnishing :</b></h5>
+            <h5><b>Street :</b></h5>
+            <h5><b>District :</b></h5>
             <span class="material-symbols-outlined" onclick="addToFav(this)">
                 favorite
                 </span>
@@ -58,11 +58,13 @@
         <div class="container ">
 
             <h5><b>Price :</b></h5>
-            <h5><b>Place :</b></h5>
-            <h5><b>Furnishing :</b></h5>
+            <h5><b>Street :</b></h5>
+            <h5><b>District :</b></h5>
             <span class="material-symbols-outlined " onclick="addToFav(this)">
                 favorite
+                
                 </span>
+
             
         </div>
 
@@ -71,10 +73,9 @@
     <div class="card col-lg-3">
         <img src="{% static 'images/1.png' %}" alt="Avatar" style="width:100%">
         <div class="container ">
-
             <h5><b>Price :</b></h5>
-            <h5><b>Place :</b></h5>
-            <h5><b>Furnishing :</b></h5>
+            <h5><b>Street :</b></h5>
+            <h5><b>District :</b></h5>
             
             <span class="material-symbols-outlined" onclick="addToFav(this)">
                 favorite
@@ -126,6 +127,7 @@
     function addToFav(clickedElement){
         if(clickedElement.style.color == 'red'){
             clickedElement.style.color = "black";
+            
         }
         else{
             clickedElement.style.color = 'red'
