@@ -179,17 +179,19 @@ def package(request):
     upload_images=data2[13]
     price=data2[14]
     contact_no=data2[15]
+    details=UserReg.objects.get(user_name=request.session['user_name'])
+    us_id=details.id
     if data1 != "":
          property = PostProperty(type=type, owner_name=owner_name, bed='0', bath='0',
                                     furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
                                     floor_no=floor_no, bachelors_allowed='none', street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no)
+                                    price=price, contact_no=contact_no,user_id_id=us_id)
          property.save()
     if data2!="":
         property = PostProperty(type=type, owner_name=owner_name, bed=bed, bath=bath,
                                     furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
                                     floor_no=floor_no, bachelors_allowed=bachelors_allowed, street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no)
+                                    price=price, contact_no=contact_no,user_id_id=us_id)
 
         property.save()
 

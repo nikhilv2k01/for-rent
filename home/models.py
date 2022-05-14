@@ -15,6 +15,7 @@ class UserReg(models.Model):
 
 
 class PostProperty(models.Model):
+    user_id=models.ForeignKey(UserReg,on_delete=models.CASCADE)
     type=models.CharField(max_length=20)
     owner_name=models.CharField(max_length=20)
     bed=models.IntegerField()
