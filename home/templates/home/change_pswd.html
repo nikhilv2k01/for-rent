@@ -19,29 +19,30 @@
     }
 </style>
 <div class="container out" style="  margin-top: 5%;width: 700px; height: 500px; ">
-  <form method="POST">
+  <form method="POST" action="">
     {% csrf_token %}
     <center><h1 class="font" style="padding-top: 10%;">Change Password</h1></center>
 
      <div class="col-lg-12" style="padding-top: 10%;">
     <div class="form-group ">
       
-      <input type="password" class="form-control" id="current_pass" aria-describedby="emailHelp" placeholder="Current Password">
+      <input type="password" class="form-control" id="current_pass" name="current_pass" placeholder="Current Password">
       <small id="currentpass_err"></small>
     </div>
      <div class="form-group">
       
-        <input type="password" class="form-control" id="new_pass" aria-describedby="emailHelp" placeholder="New Password">
+        <input type="password" class="form-control" id="new_pass" name="new_pass" placeholder="New Password">
         <small id="newpass_err"></small>
     </div>
     <div class="form-group">
       
-        <input type="password" class="form-control" id="confirm_pass" aria-describedby="emailHelp" placeholder="Confirm New Pasword">
+        <input type="password" class="form-control" id="confirm_pass" name="confirm_pass" placeholder="Confirm New Pasword">
         <small id="confirmpass_err"></small>
     </div>
     </div>
     <center><button type="submit" class="btn btn-primary col-lg-2" onclick="return validate();" >Save</button>
         </center>
+        {{msg}}
 </form> 
 </div>
 

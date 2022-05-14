@@ -19,7 +19,8 @@ urlpatterns = [
     path('mas',views.mstr),
     path('shops',views.viewshop),
     path('profile',views.profile,name="myprofile"),
-    path('logout',views.logout,name="out")
+    path('logout',views.logout,name="out"),
+    path('packageselect',views.packageselect,name="packageselect")
     
  
 ]

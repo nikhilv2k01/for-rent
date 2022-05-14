@@ -49,7 +49,8 @@
 
     <div class="p-5 test font">
 
-        <form action="" method="get">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="form-group row">
                 <div class="col-lg-2">
                     <label for="exampleFormControlSelect1">Type</label>
@@ -57,7 +58,7 @@
                 </div>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-lg-8">
-                    <select class="form-control" id="renttype" onchange=" hideUserInputs()" required>
+                    <select class="form-control" id="renttype" name="type" onchange=" hideUserInputs()" required>
                         <option disabled value="" selected>Select </option>
                         <option value="apartments">Apartments</option>
                         <option value="houses">Houses</option>
@@ -71,7 +72,7 @@
                 <label for="" class="col-sm-2 col-form-label">Owner Name</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="ower_name" required>
                 </div>
             </div>
             <div class="form-group row shopfiled">
@@ -79,14 +80,14 @@
                 <div class="col-lg-1"><b>:</b></div>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="bed" >
                 </div>
             </div>
             <div class="form-group row shopfiled">
                 <label for="" class="col-sm-2 col-form-label">Bath </label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="bath" >
                 </div>
             </div>
             <div class="form-group row">
@@ -96,7 +97,7 @@
                 </div>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-lg-8">
-                    <select class="form-control" id="exampleFormControlSelect1" required>
+                    <select class="form-control" id="exampleFormControlSelect1" name="furnishing" required>
                         <option disabled value="" selected>Select </option>
                         <option>Furnished</option>
                         <option>Unfurnished</option>
@@ -109,14 +110,14 @@
                 <label for="" class="col-sm-2 col-form-label">Built Area(sq. ft)</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="built" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Carpet Area(sq. ft)</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="carpet" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -124,14 +125,14 @@
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
 
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="tfloor" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Floor no. </label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="floor_no" required>
                 </div>
             </div>
 
@@ -140,9 +141,9 @@
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
                     <label for="">YES</label>
-                    <input type="radio" name="bachelor" required>
+                    <input type="radio" name="bachelor" >
                     <label for="">NO</label>
-                    <input type="radio" name="bachelor" required>
+                    <input type="radio" name="bachelor" >
                 </div>
             </div>
 
@@ -151,7 +152,7 @@
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
 
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="street" required>
                 </div>
             </div>
 
@@ -160,7 +161,7 @@
                 <label for="" class="col-sm-2 col-form-label">District</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                <select class="form-control" name="drdistrict" required>
+                <select class="form-control" name="district" required>
                   <option disabled value="" selected>District </option>
                   <option value="Thiruvananthapuram">Thiruvananthapuram </option>
                   <option value="Kollam">Kollam </option>
@@ -184,21 +185,21 @@
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Upload images</label>
                 <div class="col-lg-1"><b>:</b></div>
-                <input type="file" name="" id="" required>
+                <input type="file"  id="" name="upload_img" required>
                 <!-- <button type="button" class="btn btn-primary">Upload</button> -->
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Price </label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="price" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Contact Number</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" required>
+                    <input type="text" class="form-control" id="" name="contact_no" required>
                 </div>
 
             </div>
@@ -207,8 +208,8 @@
         <label for="" class="col-sm-2 col-form-label"></label>
         <div class="col-lg-1"><b></b></div>
         <div class="">
-            <a href=""> <button type="submit" class="btn btn-primary"
-                    style="margin-left:20px; padding: 10px;">Submit</button> </a>
+           <button type="submit" class="btn btn-primary"
+                    style="margin-left:20px; padding: 10px;">Submit</button>
         </div>
     </div>
 
