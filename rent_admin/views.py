@@ -1,10 +1,15 @@
 from django.shortcuts import render,redirect
 from . models import AdminLog
 from .decorates import auth_login
+from home.models import PostProperty
 
 # Create your views here.
 @auth_login
 def admin_verify(request):
+    
+    
+        
+    
     return render(request,"rent/rent_admin.html")
 
 def admin_log(request):

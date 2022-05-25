@@ -22,9 +22,10 @@
   </form> -->
   <div class="row margin_img justify-content-md-center" >
     <div class="col-4 text-center">
-      <a href="{% url 'home:display' %}" class="text-center">
+      
+      <a href="{% url 'home:display' '1' %}" class="text-center">
 
-        <img src="{% static 'images/r.jpg' %}" alt="" style="height: 300px;width: 400px;">
+        <img src="{% static 'images/r.jpg'  %}" alt="" style="height: 300px;width: 400px;">
         <div style="text-align: center;">
           <h2>Houses</h2>
         </div>
@@ -33,7 +34,7 @@
 
 
     <div class="col-4 text-center">
-      <a href="{% url 'home:display' %}">
+      <a href="{% url 'home:display' '2' %}">
         <img src="{% static 'images/furnished.jpg' %}" alt="" style="height: 300px;width: 400px;">
         <h2>Apartments</h2>
       </a>
@@ -41,7 +42,7 @@
 
 
     <div class="col-4 text-center">
-      <a href="{% url 'home:display' %}">
+      <a href="{% url 'home:display' '3' %}">
         <img src="{% static 'images/1.png' %}" alt="" style="height: 300px;width: 400px;">
 
         <h2>Shops</h2>

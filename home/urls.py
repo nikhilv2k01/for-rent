@@ -7,8 +7,8 @@ urlpatterns = [
     path('sign', views.sign, name="submit"),
     path('home', views.home,name="main"),
     path('master', views.master),
-    path('display', views.properties,name="display"),
-    path('house', views.housedetails,name="details"),
+    path('display/<str:id>', views.properties,name="display"),
+    path('house/<int:id>', views.housedetails,name="details"),
     path('password', views.change_pswd,name="change"),
     path('property', views.view_property,name="viewproperty"),
     path('favourites', views.view_favourites,name="viewfavourites"),
@@ -20,7 +20,11 @@ urlpatterns = [
     path('shops',views.viewshop),
     path('profile',views.profile,name="myprofile"),
     path('logout',views.logout,name="out"),
-    path('packageselect',views.packageselect,name="packageselect")
+    path('packageselect',views.packageselect,name="packageselect"),
+    path('selectbasic',views.selectbasic,name="selectbasic"),
+    path('packageselectpremium',views.packageselectpremium,name="packageselectpremium"),
+
+    path('selectPremium',views.selectPremium,name="selectPremium")
     
  
 ]

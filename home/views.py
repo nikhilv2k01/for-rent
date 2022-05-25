@@ -1,10 +1,13 @@
+from fileinput import filename
+ 
 from django.shortcuts import render, redirect
 from . models import UserReg, PostProperty
 from .decorates import auth_login
 import razorpay
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+from random import randint, random
+from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
@@ -19,6 +22,8 @@ def login(request):
             user_data = UserReg.objects.get(
                 user_name=user_name, password=password)
             request.session['user_name'] = user_data.user_name
+            request.session['user_id'] = user_data.id
+
             return redirect("home:main")
         else:
             msg = 'Invalid Username Or Password'
@@ -56,14 +61,31 @@ def master(request):
 
 
 @auth_login
-def properties(request):
-    return render(request, "home/display_properties.html")
+def properties(request,id):
+    # if request.method=='POST':
+    #     type=request.POST('type')
+    #     if type=='houses':
+    p_type=''
+    if id=='1':
+
+            p_type='houses'
+           
+    elif id=='2':
+        p_type='apartments'
+    else:
+        p_type='shops'
+
+    properties=PostProperty.objects.filter(type=p_type)
+    return render(request, "home/display_properties.html",{"properties":properties,})
 
 
 @auth_login
-def housedetails(request):
+def housedetails(request ,id):
+    
 
-    return render(request, "home/house.html")
+    house_details=PostProperty.objects.get(id=id)
+
+    return render(request, "home/house.html",{'house_details':house_details,})
 
 
 @auth_login
@@ -106,6 +128,7 @@ def edit_properties(request):
 @auth_login
 def rent_seller(request):
     if request.method == 'POST':
+        
         type = request.POST['type']
         owner_name = request.POST['ower_name']
         bed = request.POST['bed']
@@ -119,83 +142,104 @@ def rent_seller(request):
         street = request.POST['street']
         district = request.POST['district']
         upload_images = request.FILES['upload_img']
+        
         price = request.POST['price']
         contact_no = request.POST['contact_no']
+        img=str(upload_images)
+        
+        file_name=str(randint(11111,99999))+upload_images.name
+        print(file_name)
+        
+        fileObj=FileSystemStorage()
+        fileObj.save(file_name, upload_images)
+
+
         if type == 'shops':
             
-            property = PostProperty(type=type, owner_name=owner_name, bed='0', bath='0',
-                                    furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
-                                    floor_no=floor_no, bachelors_allowed='none', street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no)
-            # property.save()
             request.session['data1'] = [type, owner_name, furnishing, built_area, carpet_area,
-                                       total_floor, floor_no, street, district, upload_images, price, contact_no]
+                                       total_floor, floor_no, street, district, file_name, price, contact_no,]
         else:
-            property = PostProperty(type=type, owner_name=owner_name, bed=bed, bath=bath,
-                                    furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
-                                    floor_no=floor_no, bachelors_allowed=bachelors_allowed, street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no)
 
-            request.session['data2'] = [type, owner_name, furnishing,bed,bath, built_area, carpet_area,
-                                       total_floor, floor_no,bachelors_allowed, street, district, upload_images, price, contact_no]                        
+           
+            request.session['data2'] = [type, owner_name,bed ,bath,furnishing, built_area, carpet_area,
+                                       total_floor, floor_no,bachelors_allowed, street, district, file_name, price, contact_no,]                        
 
 
 
-            # property.save()
+        return redirect('home:pkgs')
     return render(request, "home/seller.html")
 
 
 @auth_login
 def package(request):
-    pack = request.POST['package']
-    data1=request.session['data1']
-    type=data1[1]
-    owner_name=data1[2]
-    furnishing=data1[3]
-    built_area=data1[4]
-    carpet_area=data1[5]
-    total_floor=data1[6]
-    floor_no=data1[7]
-    street=data1[8]
-    district=data1[9]
-    upload_images=data1[10]
-    price=data1[11]
-    contact_no=data1[12]
-
-
-    data2=request.session['data2']
-    type=data2[1]
-    owner_name=data2[2]
-    furnishing=data2[3]
-    bed=data2[4]
-    bath=data2[5]
-    built_area=data2[6]
-    carpet_area=data2[7]
-    total_floor=data2[8]
-    floor_no=data2[9]
-    bachelors_allowed=data2[10]
-    street=data2[11]
-    district=data2[12]
-    upload_images=data2[13]
-    price=data2[14]
-    contact_no=data2[15]
-    details=UserReg.objects.get(user_name=request.session['user_name'])
-    us_id=details.id
-    if data1 != "":
-         property = PostProperty(type=type, owner_name=owner_name, bed='0', bath='0',
-                                    furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
-                                    floor_no=floor_no, bachelors_allowed='none', street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no,user_id_id=us_id)
-         property.save()
-    if data2!="":
-        property = PostProperty(type=type, owner_name=owner_name, bed=bed, bath=bath,
-                                    furnishing=furnishing, built_area=built_area, carpet_area=carpet_area, total_floor=total_floor,
-                                    floor_no=floor_no, bachelors_allowed=bachelors_allowed, street=street, district=district, upload_images=upload_images,
-                                    price=price, contact_no=contact_no,user_id_id=us_id)
-
-        property.save()
+    # data=request.session['data2']
+    # userId = request.session['user_id']
+    # usr = UserReg.objects.get(id=userId)
+ 
+    
 
     return render(request, "home/package.html")
+
+def selectbasic(request):
+    userId = request.session['user_id']
+    usr = UserReg.objects.get(id=userId)
+    if 'data2' in request.session:
+       
+        data=request.session['data2']
+        
+    
+        property = PostProperty(type=data[0], owner_name=data[1], bed=data[2], bath=data[3],
+                                furnishing=data[4], built_area=data[5], carpet_area=data[6], total_floor=data[7],
+                                floor_no=data[8], bachelors_allowed=data[9], street=data[10], district=data[11], upload_images=data[12],
+                                price=data[13], contact_no=data[14], user_id=usr)
+        property.save()   
+        del request.session['data2']
+        
+                             
+    else:
+        data=request.session['data1']
+        property = PostProperty(type=data[0], owner_name=data[1], bed='0', bath='0',
+                                    furnishing=data[2], built_area=data[3], carpet_area=data[4], total_floor=data[5],
+                                    floor_no=data[6], bachelors_allowed='', street=data[7], district=data[8], upload_images=data[9],
+                                    price=data[10], contact_no=data[11],user_id=usr)
+        property.save() 
+        del request.session['data1'] 
+    
+
+    return render(request,"home/package.html")
+
+
+
+def selectPremium(request):
+    userId = request.session['user_id']
+    usr = UserReg.objects.get(id=userId)
+    if 'data2' in request.session:
+       
+        data=request.session['data2']
+        
+    
+        property = PostProperty(type=data[0], owner_name=data[1], bed=data[2], bath=data[3],
+                                furnishing=data[4], built_area=data[5], carpet_area=data[6], total_floor=data[7],
+                                floor_no=data[8], bachelors_allowed=data[9], street=data[10], district=data[11], upload_images=data[12],
+                                price=data[13], contact_no=data[14], user_id=usr)
+        property.save()   
+        del request.session['data2']
+        
+                             
+    else:
+        data=request.session['data1']
+        property = PostProperty(type=data[0], owner_name=data[1], bed='0', bath='0',
+                                    furnishing=data[2], built_area=data[3], carpet_area=data[4], total_floor=data[5],
+                                    floor_no=data[6], bachelors_allowed='', street=data[7], district=data[8], upload_images=data[9],
+                                    price=data[10], contact_no=data[11],user_id=usr)
+        property.save() 
+        del request.session['data1'] 
+    
+
+    return render(request,"home/package.html")
+
+
+
 
 
 @auth_login
@@ -210,6 +254,7 @@ def mstr(request):
 
 @auth_login
 def viewshop(request):
+
     return render(request, "home/shops.html")
 
 
@@ -232,3 +277,14 @@ def packageselect(request):
     client = razorpay.Client(auth=('rzp_test_jSJtKTJ5JPeABv','bKYuB0sQmjXqQpk1WHtktMkj'))
     payment = client.order.create({"amount": order_amount, "currency": order_currency})
     return JsonResponse(payment)
+
+
+@csrf_exempt
+def packageselectpremium(request):
+    order_amount = request.POST['totalprice']
+    order_currency = 'INR'
+    type(order_amount)
+    client = razorpay.Client(auth=('rzp_test_jSJtKTJ5JPeABv','bKYuB0sQmjXqQpk1WHtktMkj'))
+    payment = client.order.create({"amount": order_amount, "currency": order_currency})
+    return JsonResponse(payment)
+

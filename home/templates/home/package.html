@@ -161,19 +161,20 @@
           </center>
           <div class="pdl">
             <h3>₹999</h3>
-            <P style="text-decoration: wavy;">Validity 60 Days</P>
+            
             <button id="rzp-button1" class="btn btn-primary btn-lg active" onclick="pay()"> Buy Now </button>
 
             <hr>
           </div>
         </div>
         <div>
-          <h5>Property Visibility : 75%</h5>
+          <hr>
+          
+          <h5>Validity : 30 Days</h5>
           <hr>
           <h5>No of listings : 1</h5>
           <hr>
-          <h5>Higher Position in search for 20 days</h5>
-          <hr>
+          
 
         </div>
 
@@ -188,19 +189,20 @@
           </center>
           <div class="pdl">
             <h3>₹1499</h3>
-            <P style="text-decoration: wavy;">Validity 90 Days</P>
-            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Buy Now</a>
+        
+            <button id="rzp-button1" class="btn btn-primary btn-lg active" onclick="paypremium()"> Buy Now </button>
             <hr>
           </div>
         </div>
         <div>
-          <h5>Property Visibility : 90%</h5>
+          <hr>
+          <h5>Validity : 60 Days</h5>
           <hr>
 
           <h5>No of listings : 1</h5>
 
-          <hr>
-          <h5>Higher Position in search for 30 days</h5>
+          
+          
           <hr>
           <h5> Get a verified Tag </h5>
 
@@ -256,15 +258,70 @@
     function updatePayment() {
       $.ajax({
         url: '/pack',
-        type: 'POST',
-        // success: function (response) {
-        //   alert(" Payment successfull")
-        //   window.location.reload();
+        type: 'GET',
+        success: function (response) {
+          alert(" Payment successfull")
+          window.location.href='/selectbasic'
           
-        // }
-       data: {
-          package: "BASIC",
         }
+       
+       
+      })
+    }
+    </script>
+ <script>
+
+
+    function paypremium() {
+      ammount = 1499;
+      $.ajax({
+        url: '/packageselectpremium',
+        type: 'POST',
+        data: {
+          totalprice: ammount * 100,
+        },
+        success: function (response) {
+          console.log("payment_id = " + response.id);
+          var options = {
+            "key": "rzp_test_jSJtKTJ5JPeABv", // Enter the Key ID generated from the Dashboard
+            "amount": response.ammount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "For rent",
+            "order_id": response.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+              console.log(response.razorpay_payment_id);
+              console.log(response.razorpay_order_id);
+              console.log(response.razorpay_signature)
+              updatePayment()
+            },
+            "theme": {
+              "color": "#3399cc"
+            }
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            // alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+          });
+          rzp1.open();
+        }
+      })
+    }
+    function updatePayment() {
+      $.ajax({
+        url: '/pack',
+        type: 'GET',
+        success: function (response) {
+          alert(" Payment successfull")
+          window.location.href='/selectPremium'
+          
+        }
+       
        
       })
     }

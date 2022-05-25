@@ -32,6 +32,10 @@ class PostProperty(models.Model):
     price=models.IntegerField()
     package=models.CharField(max_length=10,default="None")
     contact_no=models.BigIntegerField()
+    status=models.CharField(max_length=10,default="")
 
     class Meta:
         db_table='property'
+
+
+   

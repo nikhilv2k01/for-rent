@@ -51,7 +51,7 @@
 
 
 
-<center><img src="{% static 'images/r.jpg' %}" style="height: 500px; width: 900px; margin-top: 2%;" alt=""></center>
+<center><img src="/media/{{house_details.upload_images}}" style="height: 500px; width: 900px; margin-top: 2%;" alt=""></center>
 
 <div class="p-5 test font">
 
@@ -60,19 +60,14 @@
         <div class="form-group row ">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label ">Bed</label>
-            <div class="col-lg-1"><b>:</b></div>
+            <div class="col-lg-1"><b>:</b></div>{{house_details.bed}}
 
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
         </div>
         <div class="form-group row ">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Bath </label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.bath}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
@@ -81,84 +76,63 @@
 
             </div>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-lg-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.furnishing}}
 
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Built Area(sq. ft)</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.built_area}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Carpet Area(sq. ft)</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.carpet_area}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Total Floor</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.total_floor}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Floor no. </label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.floor_no}}
         </div>
 
         <div class="form-group row shopfiled">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Bachelors Allowed</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.bachelors_allowed}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Street</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.street}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">District</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.district}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Price</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.price}}
         </div>
         <div class="form-group row">
             <div class="col-sm-3"></div>
             <label for="" class="col-sm-2 col-form-label">Contact Number</label>
             <div class="col-lg-1"><b>:</b></div>
-            <!-- <div class="col-sm-8">
-                    <input type="text" class="form-control" id="">
-                </div> -->
+            {{house_details.contact_no}}
         </div>
 
 
