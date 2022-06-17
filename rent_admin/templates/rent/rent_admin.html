@@ -1,106 +1,96 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Luckiest+Guy&family=Paytone+One&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Luckiest+Guy&family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orelega+One&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <style>
-    .rent {
-      color: rgb(228, 219, 219);
-      background-color: rgb(172, 7, 40);
-      padding-left: 1%;
-      padding-left: 5%;
-      padding-top: 1%;
-      padding-bottom: 1%;
-      font-family: 'Luckiest Guy', cursive;
-      width: 100%;
-      font-size: 20px;
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <style>
+      .rent {
+        color: rgb(228, 219, 219);
+        background-color: rgb(172, 7, 40);
+        padding-left: 1%;
+        padding-left: 5%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        font-family: "Luckiest Guy", cursive;
+        width: 100%;
+        font-size: 20px;
+      }
 
+      .footer {
+        height: 10vh;
+        background-color: rgb(172, 7, 40);
+        width: 100%;
+      }
+      .log {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
-    }
+        margin-left: 90%;
+      }
+    </style>
+  </head>
 
-    .footer {
-      height: 10vh;
-      background-color: rgb(172, 7, 40);
-      width: 100%;
-    }
-    .log{
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      
-      margin-left: 90%;
-    }
-
+  <body>
+    <div style="height: 100vh;">
+    <div class="rent">
+      <h1 style="padding-left: 42%">FOR RENT</h1>
+      <a
+        class="btn btn-warning log"
+        href="{% url 'rent_admin:out' %}"
+        role="button"
+        >LogOut</a
+      >
+    </div>
     
-  </style>
-</head>
-
-<body>
-  <div class="rent">
-
-    <h1 style="padding-left: 42%;">
-      FOR RENT
-    
-    </h1>
-    <a class="btn btn-warning log" href="{% url 'rent_admin:out' %}" role="button" >LogOut</a>
-</div>
-    <table class="table table-striped table-dark" style="margin-top: 5%; width: 70%; margin-left: 15%; margin-bottom: 15%;">
+ 
+      <table
+        class="table table-striped table-dark"
+        style="margin-top: 5%; width: 70%; margin-left: 15%; margin-bottom: 5%"
+      >
         <thead>
           <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
+            
+            <th scope="col">Owner Name</th>
+            
             <th scope="col">Contact Number</th>
             <th scope="col">Verify</th>
           </tr>
         </thead>
+        {% for v in verify %}
         <tbody>
           <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="button" class="btn btn-success">Verified</button></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="button" class="btn btn-success">Verfied</button></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="button" class="btn btn-success">Verified</button></td>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="button" class="btn btn-success">Verified</button></td>
-              </tr>
+            
+            <td>{{v.owner_name}}</td>
+            <td>{{v.contact_no}}</td>
+            
+            <td>
+              <a href="{% url 'rent_admin:premium' v.id %}"><button type="button"  class="btn btn-success">Verify</button></a>
+            </td>
           </tr>
          
-
         </tbody>
+        {% endfor %}
       </table>
-    
   
-  <div class="rent" style="margin-top: 2%; height:40px">
-
-</div>
+      <div class="rent" style=" height: 40px"></div>
+    </div>
   </body>
-  </html>
+</html>

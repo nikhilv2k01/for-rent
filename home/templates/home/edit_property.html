@@ -1,136 +1,216 @@
 {% extends 'home/master_rent.html' %}
-{% load static %}
 {% block content %}
-<style>
-    .font {
-        font-family: 'Acme', sans-serif;
-        font-size: 20px;
-    }
-</style>
+{% load static %}
 
-<div class="p-5 test font">
 
-    <form action="" method="get">
+    <style>
+        .dd {
+            background-color: white;
+            color: black;
+        }
 
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Owner Name</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
+        div>label {
+            font-size: 150;
+            font-weight: bold;
+
+        }
+
+        .rent {
+            color: rgb(228, 219, 219);
+            background-color: rgb(172, 7, 40);
+
+            padding-top: 2%;
+            padding-bottom: 2%;
+
+        }
+
+        .font {
+            font-family: 'Acme', sans-serif;
+            font-size: 20px;
+        }
+
+        .hfont {
+            font-family: 'Luckiest Guy', cursive;
+
+
+        }
+
+        .lfont {
+            font-size: 30px;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 2%;
+
+        }
+    </style>
+
+<body class="dd">
+    
+
+    <div class="p-5 test font">
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Owner Name</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="ower_name" value="{{edit.owner_name}}" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group row shopfiled">
-            <label for="" class="col-sm-2 col-form-label ">Bed</label>
-            <div class="col-lg-1"><b>:</b></div>
+            <div class="form-group row shopfiled">
+                <label for="" class="col-sm-2 col-form-label ">Bed</label>
+                <div class="col-lg-1"><b>:</b></div>
 
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="bed" value="{{edit.bed}}" required >
+                </div>
             </div>
-        </div>
-        <div class="form-group row shopfiled">
-            <label for="" class="col-sm-2 col-form-label">Bath </label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
+            <div class="form-group row shopfiled">
+                <label for="" class="col-sm-2 col-form-label">Bath </label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="bath" value="{{edit.bath}}" required >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-lg-2">
-                <label for="exampleFormControlSelect1">Furnishing</label>
+            <div class="form-group row">
+                <div class="col-lg-2">
+                    <label for="exampleFormControlSelect1">Furnishing</label>
+
+                </div>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-lg-8">
+                    <select class="form-control" id="exampleFormControlSelect1" name="furnishing" required>
+                        <option disabled value="{{edit.furnishing}}" selected>{{edit.furnishing}} </option>
+                        <option>Furnished</option>
+                        <option>Unfurnished</option>
+
+                    </select>
+                </div>
 
             </div>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-lg-8">
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Furnished</option>
-                    <option>Unfurnished</option>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Built Area(sq. ft)</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="built" value="{{edit.built_area}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Carpet Area(sq. ft)</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="carpet" value="{{edit.carpet_area}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Total Floor</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+
+                    <input type="text" class="form-control" id="" name="tfloor" value="{{edit.total_floor}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Floor no. </label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="floor_no" value="{{edit.floor_no}}" required>
+                </div>
+            </div>
+
+            <div class="form-group row shopfiled">
+                <label for="" class="col-sm-2 col-form-label">Bachelors Allowed</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                   {% if edit.bachelors_allowed == 'Yes' %}
+                    <label for="">YES</label>
+                    <input type="radio" value="" checked name="bachelor">
+                    <label for="">NO</label>
+                    <input type="radio"  name="bachelor">
+                    {% else %}
+                    <label for="">YES</label>
+                    <input type="radio" value="" name="bachelor">
+                    <label for="">NO</label>
+                    <input type="radio" checked name="bachelor">
+                   {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Street</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+
+                    <input type="text" class="form-control" id="" name="street" value="{{edit.street}}" required>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">District</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                <select class="form-control" name="district" required>
+                    
+                  <option disabled value="{{edit.district}}" selected>{{edit.district}}</option>
+                  <option value="Thiruvananthapuram">Thiruvananthapuram </option>
+                  <option value="Kollam">Kollam </option>
+                  <option value="Pathanamthitta">Pathanamthitta </option>
+                  <option value="Alappuzha">Alappuzha </option>
+                  <option value="Kottayam">Kottayam </option>
+                  <option value="Idukki">Idukki </option>
+                  <option value="Ernakulam">Ernakulam</option>
+                  <option value="Thrissur">Thrissur </option>
+                  <option value="Palakkad">Palakkad </option>
+                  <option value="Malappuram">Malappuram </option>
+                  <option value="Kozhikode">Kozhikode </option>
+                  <option value="Wayanad">Wayanad </option>
+                  <option value="Kannur">Kannur </option>
+                  <option value="Kasargod">Kasargod</option>
 
                 </select>
+                </div>
             </div>
 
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Built Area</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Upload images</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <input type="file"  id="" name="upload_img" value="{{edit.upload_images.url}}"  required>
+                <!-- <button type="button" class="btn btn-primary">Upload</button> -->
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Carpet Area</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Price </label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="price" value="{{edit.price}}" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Total Floor</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Contact Number</label>
+                <div class="col-lg-1"><b>:</b></div>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="" name="contact_no" value="{{edit.contact_no}}" required>
+                </div>
 
-                <input type="text" class="form-control" id="">
             </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label"></label>
+        <div class="col-lg-1"><b></b></div>
+        <div class="">
+           <button type="submit" class="btn btn-primary"
+                    style="margin-left:20px; padding: 10px;">Submit</button>
         </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Floor no. </label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
-            </div>
-        </div>
-
-        <div class="form-group row shopfiled">
-            <label for="" class="col-sm-2 col-form-label">Bachelors Allowed</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <label for="">YES</label>
-                <input type="radio" name="bachelor">
-                <label for="">NO</label>
-                <input type="radio" name="bachelor">
-            </div>
-        </div>
+    </div>
 
 
 
-
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Property Address</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <textarea class="form-control col-sm-8 " id="exampleFormControlTextarea1" rows="4"></textarea>
-        </div>
-
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Upload images</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <input type="file" name="" id="">
-            <!-- <button type="button" class="btn btn-primary">Upload</button> -->
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Price </label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Contact Number</label>
-            <div class="col-lg-1"><b>:</b></div>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="">
-            </div>
-
-        </div>
-</div>
-<div class="form-group row">
-    <label for="" class="col-sm-2 col-form-label"></label>
-    <div class="col-lg-1"><b></b></div>
-    <button type="button" class="btn btn-primary col-lg-2"
-            style="margin-left:20px; padding: 10px;">Submit</button>
-</div>
+    </form>
+    </div>
 
 
-</form>
-</div>
-
+</body>
 
 {% endblock %}

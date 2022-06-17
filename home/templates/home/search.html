@@ -1,0 +1,81 @@
+{% extends 'home/master_rent.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+    }
+    .card {
+      /* Add shadows to create the "card" effect */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    /* On mouse-over, add a deeper shadow */
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add some padding inside the card container */
+    .container {
+      padding: 2px 16px;
+    }
+    </style>
+
+    
+  <form class="form-inline pdleft" action="{% url 'home:search' %}" method="GET" style="padding-top: 3%;">
+    
+    <input class="form-control mr-sm-1 col-lg-5" name="search" type="search" placeholder="Search" aria-label="Search"
+      style="height: 40px; font-size: large;">
+    <button class="btn btn-outline-success my-2 my-sm-0 col-lg-3 " type="submit"
+      style="height: 40px;font-size:large">Search</button>
+  </form>
+
+
+
+  
+<div class="row" style=" margin-top:3%; margin-bottom: 3%;">
+    
+    {% for user in username %}{% if username %} 
+     
+    <div class="card col-lg-3 " style="margin-left: 4%; margin-bottom: 3%; ">
+        <img src="/media/{{ user.upload_images }}" alt="Avatar" style="padding-top: 4%;" height="250">
+        <div class="container ">
+
+            <h5><b>Price : {{user.price}}</b></h5>
+            <h5><b>Street : {{user.street}}</b></h5>
+            <h5><b>District : {{user.district}}</b></h5>
+            <span class="material-symbols-outlined" onclick="addToFav(this)">
+                favorite
+                </span>
+                <a href="{% url 'home:details' user.id %}">See more</a>
+            
+        </div>
+
+    </div>
+    {% else %}
+    <center><strong>No Property Available</strong></center>
+    {% endif %}
+    {% endfor %}
+    
+
+</div>
+
+<script>
+    function addToFav(clickedElement){
+        if(clickedElement.style.color == 'red'){
+            clickedElement.style.color = "black";
+            
+        }
+        else{
+            clickedElement.style.color = 'red'
+        }
+   
+    }
+</script>
+
+{% endblock %}

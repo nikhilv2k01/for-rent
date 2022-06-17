@@ -60,9 +60,9 @@
                 <div class="col-lg-8">
                     <select class="form-control" id="renttype" name="type" onchange=" hideUserInputs()" required>
                         <option disabled value="" selected>Select </option>
-                        <option value="apartments">Apartments</option>
-                        <option value="houses">Houses</option>
-                        <option value="shops"> Shops</option>
+                        <option value="Apartment">Apartments</option>
+                        <option value="House">Houses</option>
+                        <option value="Shop">Shops</option>
 
                     </select>
                 </div>
@@ -72,7 +72,7 @@
                 <label for="" class="col-sm-2 col-form-label">Owner Name</label>
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="" name="ower_name" required>
+                    <input type="text" class="form-control" id="" name="owner_name" required>
                 </div>
             </div>
             <div class="form-group row shopfiled">
@@ -141,9 +141,9 @@
                 <div class="col-lg-1"><b>:</b></div>
                 <div class="col-sm-8">
                     <label for="">YES</label>
-                    <input type="radio" name="bachelor" >
+                    <input type="radio" name="bachelor" value="Yes" checked >
                     <label for="">NO</label>
-                    <input type="radio" name="bachelor" >
+                    <input type="radio" name="bachelor" value="No" >
                 </div>
             </div>
 
@@ -222,13 +222,21 @@
 
             renttype = document.getElementById("renttype")
             console.log(renttype.value);
-            if (renttype.value == "shops") {
-
+            if (renttype.value == "Shop") {
+                
                 document.getElementsByClassName('shopfiled')[0].hidden = true
+
+
                 document.getElementsByClassName('shopfiled')[1].hidden = true
+
+
                 document.getElementsByClassName('shopfiled')[2].hidden = true
+                
+
+
 
             }
+            
             else {
                 document.getElementsByClassName('shopfiled')[0].hidden = false
                 document.getElementsByClassName('shopfiled')[1].hidden = false

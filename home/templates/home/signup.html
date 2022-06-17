@@ -187,10 +187,8 @@
 
       <div class="container pd">
         <h1 class="">SignUp</h1>
-
         <hr>
-
-
+        
         <input type="text" placeholder="Username" name="username" id="user_name">
         <span id="user_err"></span>
 
@@ -198,6 +196,13 @@
         <input type="text" placeholder="Email" name="email" id="email">
         <span id="email_err"></span>
 
+
+
+        <input type="text" placeholder="Mobile Number" name="mobile" id="mobile">
+
+        <span id="mobile_err"></span>
+
+        
 
         <input type="text" placeholder=" Password" name="password" id="pswd">
         <span id="pswd_err"></span>
@@ -226,6 +231,18 @@
       var u_email = document.getElementById("email")
       var u_pswd = document.getElementById("pswd")
       var u_cpswd = document.getElementById("c_pswd")
+      var f_name = document.getElementById("fname")
+      var l_name = document.getElementById("lname")
+      var mobile = document.getElementById("mobile")
+      var state = document.getElementById("user_name")
+      var city = document.getElementById("state")
+      var mobile_pattern = /^[6-9]\d{9}$/
+
+
+
+
+
+
       var email_pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
       if (u_name.value == "") {
@@ -261,6 +278,79 @@
         status = 1
 
       }
+
+      if (f_name.value == "") {
+        document.getElementById("f_err").innerHTML = "Please Enter First Name"
+        document.getElementById("f_err").style.color = "red"
+        status = 0
+
+
+      }
+      else {
+        document.getElementById("f_err").innerHTML = ""
+        status = 1
+
+
+      }
+
+
+      if (l_name.value == "") {
+        document.getElementById("l_err").innerHTML = "Please Enter Last Name"
+        document.getElementById("l_err").style.color = "red"
+        status = 0
+
+
+      }
+      else {
+        document.getElementById("l_err").innerHTML = ""
+        status = 1
+
+
+      }
+      if (state.value == "") {
+        document.getElementById("state_err").innerHTML = "Please Enter  State"
+        document.getElementById("state_err").style.color = "red"
+        status = 0
+      }
+      else {
+        document.getElementById("state_err").innerHTML = ""
+        status = 1
+
+      }
+
+      if (city.value == "") {
+        document.getElementById("city_err").innerHTML = "Please Enter  City"
+        document.getElementById("city_err").style.color = "red"
+        status = 0
+      }
+      else {
+        document.getElementById("city_err").innerHTML = ""
+        status = 1
+
+      }
+      if (mobile.value == "") {
+        document.getElementById("mobile_err").innerHTML = "Please Enter  Mobile Number"
+        document.getElementById("mobile_err").style.color = "red"
+        status = 0
+      }
+      else if (mobile.value.match(mobile_pattern)) {
+       
+        document.getElementById("mobile_err").innerHTML = ""
+        status = 1
+
+
+      }
+      else {
+        document.getElementById("mobile_err").innerHTML = "Please Enter Valid Mobile Number"
+        document.getElementById("mobile_err").style.color = "red"
+        status = 0
+
+      }
+
+
+
+
+
       if (u_pswd.value == "") {
         document.getElementById("pswd_err").innerHTML = "Please Enter Password"
         document.getElementById("pswd_err").style.color = "red"

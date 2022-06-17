@@ -2,71 +2,104 @@
 {% block content %}
 {% load static %}
 <style>
-    .material-symbols-outlined {
-      font-variation-settings:
+  .material-symbols-outlined {
+    font-variation-settings:
       'FILL' 0,
       'wght' 400,
       'GRAD' 0,
       'opsz' 48
-    }
-    .card {
-      /* Add shadows to create the "card" effect */
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      transition: 0.3s;
-    }
+  }
 
-    /* On mouse-over, add a deeper shadow */
-    .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
+  .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
 
-    /* Add some padding inside the card container */
-    .container {
-      padding: 2px 16px;
-    }
-    </style>
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
 
-    
-  <form class="form-inline pdleft " style="padding-top: 3%;">
-    <input class="form-control mr-sm-1 col-lg-5" type="search" placeholder="Search" aria-label="Search"
-      style="height: 40px; font-size: large;">
-    <button class="btn btn-outline-success my-2 my-sm-0 col-lg-3 " type="submit"
-      style="height: 40px;font-size:large">Search</button>
-  </form>
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
 
+  .verify {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    color: red;
+  }
+</style>
 
 
-  
-<div class="row" style=" margin-top:3%; margin-bottom: 3%;">
+<form class="form-inline pdleft" action="{% url 'home:search' %}" method="GET" style="padding-top: 3%;">
+
+  <input class="form-control mr-sm-1 col-lg-5" name="search" type="search" placeholder="Search" aria-label="Search"
+    style="height: 40px; font-size: large;">
+  <button class="btn btn-outline-success my-2 my-sm-0 col-lg-3 " type="submit"
+    style="height: 40px;font-size:large">Search</button>
+</form>
+
+
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row" style=" margin-top:3%; margin-bottom: 3%;">
+
     {% for p in properties %}
-    <div class="card col-lg-3 " style="margin-left: 4%; margin-bottom: 3%; ">
-        <img src="{% static 'images/b.jpg' %}" alt="Avatar" style="width:100%">
-        <div class="container ">
 
-            <h5><b>Price : {{p.price}}</b></h5>
-            <h5><b>Street : {{p.street}}</b></h5>
-            <h5><b>District : {{p.district}}</b></h5>
-            <span class="material-symbols-outlined" onclick="addToFav(this)">
-                favorite
-                </span>
-            <a href="{% url 'home:details' p.id %}">See more</a>
-        </div>
+
+    <div class="card col-lg-3 " style="margin-left: 4%; margin-bottom: 3%; ">
+      <img src="/media/{{ p.upload_images }}" alt="Avatar" style="padding-top: 4%;" height="250">
+      <div class="container ">
+
+        <h5><b>Price : {{p.price}}</b></h5>
+        <h5><b>Street : {{p.street}}</b></h5>
+        <h5><b>District : {{p.district}}</b></h5>
+
+
+
+        <a href="{% url 'home:favourites' p.id %}"><span class="material-symbols-outlined" onclick="addToFav(this)">
+            favorite
+          </span></a><br>
+        <span>{{err_msg}}</span>
+
+
+        {% if p.type == 'Shop' %}
+        <a href="{% url 'home:shop' p.id %}">See more</a>
+        {% else %}
+        <a href="{% url 'home:house' p.id %}">See more</a>
+        {% endif %}
+
+
+
+        {% if p.premium_package == True %}
+        <p class="verify">Verified</p>
+        {% else %}
+        <p></p>
+        {% endif %}
+      </div>
 
     </div>
-    {% endfor %}
-</div>
 
+    {% endfor %}
+  </div>
+
+</form>
 <script>
-    function addToFav(clickedElement){
-        if(clickedElement.style.color == 'red'){
-            clickedElement.style.color = "black";
-            
-        }
-        else{
-            clickedElement.style.color = 'red'
-        }
-   
+  function addToFav(clickedElement) {
+    if (clickedElement.style.color == 'red') {
+      clickedElement.style.color = "black";
+
     }
+    else {
+      clickedElement.style.color = 'red'
+    }
+
+  }
 </script>
 
 {% endblock %}

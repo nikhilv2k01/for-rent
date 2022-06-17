@@ -69,53 +69,58 @@ input[type=file]::-webkit-file-upload-button{
 
 </style>
 
-
+<form action="" method="POST" enctype="multipart/form-data">
+  
   <div class="upload" style="margin-top: 3%; ">
-    <img src="{% static 'images/noprofil.jpg' %}" width = 150 height = 150 alt="" >
+    <img src="/media/{{profile.upload_image}}" width = 150 height = 150 alt="" >
     <div class="round">
-      <input type="file">
+      <input type="file" name="photo"  required>
       <i class = "fa fa-camera" style = "color: #fff;"></i>
     </div>
   </div>
 
-
-    <form style="padding-left: 18%; padding-top: 2%;">
+  <div style="padding-left: 18%; padding-top: 2%;" >
+    
+      {% csrf_token %}
         <div class="form-row" >
             <div class="form-group col-md-5">
                 <label for="">First Name</label>
-                <input type="text" class="form-control" id="inputEmail4" required>
+          
+                <input type="text" class="form-control"  name="fname" id="inputEmail4" value="{{profile.first_name}}" placeholder="First name" required>
+
             </div>
             <div class="form-group col-md-5">
                 <label for="">Last Name</label>
-                <input type="text" class="form-control" id="inputPassword4"required>
+                <input type="text" class="form-control" name="lname" id="inputPassword4" value="{{profile.last_name}}" placeholder="Last name" required>
             </div>
         </div>
         <div class="form-group width ">
             <label for="">Date Of Birth</label>
-            <input type="date" class="form-control" id="" placeholder=""required>
-        </div>
+            <input type="date" class="form-control" name="dateofbirth" id="" value="{{profile.dateofbirth}}" placeholder="Date of birth" required>
+        </div> 
         <div class="form-group width">
             <label for="">Phone Number </label>
-            <input type="text" class="form-control" id="" placeholder="" required>
+            <input type="text" class="form-control" name="phone" value="{{profile.phone}}" id="" placeholder="" required>
         </div>
         <div class="form-group width">
             <label for="">Email </label>
-            <input type="text" class="form-control" id="" placeholder="" required>
+            <input type="text" class="form-control" name="email" value="{{profile.email}}" id="" placeholder="" required>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="" required>
+                <input type="text" class="form-control" name="city" value="{{profile.city}}" id="" placeholder="City" required>
             </div>
             <div class="form-group col-md-5">
                 <label for="inputState">State</label>
-                <input type="text" class="form-control" id="" required>
+                <input type="text" class="form-control" name="state" id="" value="{{profile.state}}" placeholder="state" required>
             </div>
 
         </div>
 
         <button type="submit" class="btn btn-primary col-lg-1">SAVE</button>
+      </div>
     </form>
 </div>
 {% endblock %}

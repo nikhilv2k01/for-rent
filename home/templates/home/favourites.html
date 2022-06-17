@@ -18,32 +18,51 @@
     .container {
       padding: 2px 16px;
     }
+    .verify{
+      font-family: 'Lobster', cursive;
+      font-size: 30px;
+      color: red;
+    }
 </style>
+
 <div class="row" style=" margin-top:3%;">
-    
+  
+    {% for view in view_favourites %}
     <div class="card col-lg-3" style="margin-left: 4%; ">
-        <img src="{% static 'images/b.jpg' %}" alt="Avatar" style="width:100%">
+        <img src="/media/{{view.property_id.upload_images}}" alt="Avatar" style="width:100%">
         <div class="container ">
 
-            <h5><b>Price :</b></h5>
-            <h5><b>Place :</b></h5>
-            <h5><b>Furnishing :</b></h5>
-            <a href="{% url 'home:details' %}">See more</a>
-        </div>
-
-    </div>
-    
-    
-    <div class="col-lg-1"></div>
-    <div class="card col-lg-3">
-        <img src="{% static 'images/r.jpg' %}" alt="Avatar" style="width:100%">
-        <div class="container ">
-
-            <h5><b>Price :</b></h5>
-            <h5><b>Place :</b></h5>
-            <h5><b>Furnishing :</b></h5>
+            <h5><b>Price : {{view.property_id.price}} </b></h5>
+            <h5><b>Street : {{view.property_id.street}}</b></h5>
+            <h5><b>District : {{view.property_id.district}}</b></h5>
             
+            <a type="submit" href="{% url 'home:favourites' view.property_id.id %}"><span class="material-symbols-outlined" onclick="addToFav(this)">
+
+              favorite
+              </span></a><br>
+
+              <span>{{err_msg}}</span>
+          
+              
+              {% if view.property_id.type == 'Shop'%}
+              <a href="{% url 'home:shop' view.property_id.id %}">See more</a>
+              {% else %}
+              <a href="{% url 'home:shop' view.property_id.id %}">See more</a>
+              {% endif %}
+              
+              {% if view.property_id.premium_package == True  %}
+              <p class="verify">Verified</p>
+              {% else %}
+              <p></p>
+              {% endif %}
+
         </div>
+        
+    </div>
+    {% endfor %}
+
+    
+  
 
     </div>
     {% endblock %}
